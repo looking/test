@@ -11,61 +11,61 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 /**
- * IOCå®¹å™¨çš„å®ç°
+ * IOCÈİÆ÷µÄÊµÏÖ
  * */
 public class ContainerTest {
 	/**
-	 * beanfactoryå®ç°ï¼Œä»æ–‡ä»¶ç³»ç»Ÿä¸­è·å–èµ„æº
+	 * beanfactoryÊµÏÖ£¬´ÓÎÄ¼şÏµÍ³ÖĞ»ñÈ¡×ÊÔ´
 	 */
 	@Test
 	public void beanFactoryBaseonFileSystem(){
-		//ä»æ–‡ä»¶ç³»ç»Ÿä¸­è·å–é…ç½®æ–‡ä»¶ï¼Œé»˜è®¤ä¸ºç›¸å¯¹è·¯å¾„ï¼Œä¹Ÿå¯ä»¥å–ç»å¯¹è·¯å¾„
+		//´ÓÎÄ¼şÏµÍ³ÖĞ»ñÈ¡ÅäÖÃÎÄ¼ş£¬Ä¬ÈÏÎªÏà¶ÔÂ·¾¶£¬Ò²¿ÉÒÔÈ¡¾ø¶ÔÂ·¾¶
 		File file=new File("bin/resource/chapter01.xml");
 		Resource resource=new FileSystemResource(file);
-		//åˆå§‹åŒ–å®¹å™¨
+		//³õÊ¼»¯ÈİÆ÷
 		BeanFactory bean=new XmlBeanFactory(resource);
-		//ä»å®¹å™¨ä¸­è·å–bean
+		//´ÓÈİÆ÷ÖĞ»ñÈ¡bean
 		GreetServiceImp service=bean.getBean("greetservice", GreetServiceImp.class);
-		//æ‰§è¡Œæ“ä½œ
+		//Ö´ĞĞ²Ù×÷
 		service.sayGreeting();
 	}
 	/**
-	 * beanfactoryå®ç°ï¼Œä»classpathè·å–èµ„æº
+	 * beanfactoryÊµÏÖ£¬´Óclasspath»ñÈ¡×ÊÔ´
 	 */
 	@Test
 	public void beanFactoryBaseOnClassPath(){
-		//å‡†å¤‡é…ç½®æ–‡ä»¶ï¼Œä»å½“å‰ç±»åŠ è½½è·¯å¾„ä¸­è·å–é…ç½®æ–‡ä»¶
+		//×¼±¸ÅäÖÃÎÄ¼ş£¬´Óµ±Ç°Àà¼ÓÔØÂ·¾¶ÖĞ»ñÈ¡ÅäÖÃÎÄ¼ş
 		Resource resource=new ClassPathResource("resource/chapter01.xml");
-		//åˆå§‹åŒ–å®¹å™¨
+		//³õÊ¼»¯ÈİÆ÷
 		BeanFactory bean=new XmlBeanFactory(resource);
-		//ä»å®¹å™¨ä¸­è·å–bean
+		//´ÓÈİÆ÷ÖĞ»ñÈ¡bean
 		GreetServiceImp service=bean.getBean("greetservice", GreetServiceImp.class);
-		//æ‰§è¡Œæ“ä½œ
+		//Ö´ĞĞ²Ù×÷
 		service.sayGreeting();
 	}
 	/**
-	 * ApplicationContextå®ç°ï¼Œä»æ–‡ä»¶ç³»ç»Ÿä¸­è·å–èµ„æº
-	 */
+	 * ApplicationContextÊµÏÖ£¬´ÓÎÄ¼şÏµÍ³ÖĞ»ñÈ¡×ÊÔ´
+	 */ 
 	@Test
 	public void applicationContextBaseOnFileSystem(){
-		//å‡†å¤‡é…ç½®æ–‡ä»¶ï¼Œä»æ–‡ä»¶ç³»ç»Ÿä¸­è·å–é…ç½®æ–‡ä»¶ï¼Œé»˜è®¤ä¸ºç›¸å½“è·¯å¾„ï¼Œä¹Ÿå¯ä»¥å†™ç»å¯¹è·¯å¾„
+		//×¼±¸ÅäÖÃÎÄ¼ş£¬´ÓÎÄ¼şÏµÍ³ÖĞ»ñÈ¡ÅäÖÃÎÄ¼ş£¬Ä¬ÈÏÎªÏàµ±Â·¾¶£¬Ò²¿ÉÒÔĞ´¾ø¶ÔÂ·¾¶
 		BeanFactory bean=new FileSystemXmlApplicationContext("bin/resource/chapter01.xml");
-		//ä»å®¹å™¨ä¸­è·å–bean
+		//´ÓÈİÆ÷ÖĞ»ñÈ¡bean
 		GreetServiceImp service=bean.getBean("greetservice", GreetServiceImp.class);
-		//æ‰§è¡Œæ“ä½œ
+		//Ö´ĞĞ²Ù×÷
 		service.sayGreeting();
 	}
 	
 	/**
-	 * ApplicationContextå®ç°ï¼Œä»ClassPathä¸­è·å–èµ„æº
+	 * ApplicationContextÊµÏÖ£¬´ÓClassPathÖĞ»ñÈ¡×ÊÔ´
 	 */
 	@Test
 	public void applicationContextBaseOnClassPath(){
-		//å‡†å¤‡é…ç½®æ–‡ä»¶ï¼Œä»å½“å‰ç±»åŠ è½½è·¯å¾„ä¸­è·å–é…ç½®æ–‡ä»¶
+		//×¼±¸ÅäÖÃÎÄ¼ş£¬´Óµ±Ç°Àà¼ÓÔØÂ·¾¶ÖĞ»ñÈ¡ÅäÖÃÎÄ¼ş
 		BeanFactory bean=new ClassPathXmlApplicationContext("resource/chapter01.xml");
-		//ä»å®¹å™¨ä¸­è·å–bean
+		//´ÓÈİÆ÷ÖĞ»ñÈ¡bean
 		GreetServiceImp service=bean.getBean("greetservice",GreetServiceImp.class);
-		//æ‰§è¡Œæ“ä½œ
+		//Ö´ĞĞ²Ù×÷
 		service.sayGreeting();
 	}
 }
