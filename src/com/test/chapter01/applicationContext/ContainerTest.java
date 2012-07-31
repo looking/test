@@ -45,7 +45,7 @@ public class ContainerTest {
 	}
 	/**
 	 * ApplicationContext实现，从文件系统中获取资源
-	 */
+	 */ 
 	@Test
 	public void applicationContextBaseOnFileSystem(){
 		//准备配置文件，从文件系统中获取配置文件，默认为相当路径，也可以写绝对路径
